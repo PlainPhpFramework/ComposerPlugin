@@ -1,5 +1,4 @@
 <?php
-
 namespace PlainPhp\Composer;
 
 use Composer\Package\PackageInterface;
