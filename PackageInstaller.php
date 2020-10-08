@@ -12,7 +12,7 @@ class PackageInstaller implements PluginInterface
 {
 	public function activate(Composer $composer, IOInterface $io)
 	{
-		$this->io = $io
+		$this->io = $io;
 		$this->composer = $composer;
 	}
 
