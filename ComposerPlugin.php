@@ -17,18 +17,26 @@ class PackageInstallerPlugin implements PluginInterface
 	}
 
 	public function installPackage(PostFileDownloadEvent $event) {
-		$documentRoot = \realpath($this->composer->getConfig()->get('vendor-dir').'/../');
-		$source = $event->getFileName();
-		$sourceDirectory = $evemt->getPackage()->getTargetDir();
 
-		$dest = $documentRoot . str_replace($sourceDirectory, '', $source);
+		$config = $this->composer->getConfig();
 
-		pathinfo($dest);
+		if ($config['type'] === 'PlainPhp-Package') {
+	
+			$documentRoot = \realpath($this->composer->getConfig()->get('vendor-dir').'/../');
+			$source = $event->getFileName();
+			$sourceDirectory = $evemt->getPackage()->getTargetDir();
 
-		if (!file_exists($path['dirname'])) {
-			mkdir($path['dirname'], 0644, true);
+			$dest = $documentRoot . '/packages/' . str_replace($sourceDirectory, '', $source);
+
+			pathinfo($dest);
+
+			if (!file_exists($path['dirname'])) {
+				mkdir($path['dirname'], 0644, true);
+			}
+			copy($source, $dest);
+
 		}
-		copy($source, $dest);
+
 	}
 
 	public static function getSubscribedEvents()
