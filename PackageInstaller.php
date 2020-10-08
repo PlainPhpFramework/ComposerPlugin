@@ -5,7 +5,7 @@ namespace PlainPhp\Composer;
 use Composer\Package\PackageInterface;
 use Composer\Installer\LibraryInstaller;
 
-class TemplateInstaller extends LibraryInstaller
+class PackageInstaller extends LibraryInstaller
 {
     /**
      * {@inheritDoc}
