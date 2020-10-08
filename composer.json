@@ -1,5 +1,5 @@
 {
-    "name": "PlainPhp/PackageInstaller",
+    "name": "plainphp/package-installer",
     "type": "composer-plugin",
     "require": {
         "composer-plugin-api": "^1.1"
