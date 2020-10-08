@@ -8,7 +8,7 @@ use Composer\Plugin\PluginInterface;
 use Composer\Plugin\PluginEvents;
 use Composer\Plugin\PostFileDownloadEvent;
 
-class PackageInstallerPlugin implements PluginInterface
+class PackageInstaller implements PluginInterface
 {
 	public function activate(Composer $composer, IOInterface $io)
 	{
@@ -20,7 +20,7 @@ class PackageInstallerPlugin implements PluginInterface
 
 		$config = $this->composer->getConfig();
 
-		if ($config['type'] === 'PlainPhp-Package') {
+		if ($config['type'] === 'plainphp-package') {
 	
 			$documentRoot = \realpath($this->composer->getConfig()->get('vendor-dir').'/../');
 			$source = $event->getFileName();

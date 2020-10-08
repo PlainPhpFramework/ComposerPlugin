@@ -1,15 +1,15 @@
 {
-    "name": "PlainPhp/ComposerPlugin",
+    "name": "PlainPhp/PackageInstaller",
     "type": "composer-plugin",
     "require": {
         "composer-plugin-api": "^1.1"
     },
     "extra": {
-        "class": "PlainPhp\\Composer\\PackageInstallerPlugin"
+        "class": "PlainPhp\\Composer\\PackageInstaller"
     },
     "autoload":{
         "psr-4":{
-            "PlainPhp\\Composer":"/"
+            "PlainPhp\\Composer\\PackageInstaller":"/"
         }
     }
 }
