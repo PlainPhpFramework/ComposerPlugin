@@ -16,9 +16,19 @@ class PackageInstaller implements PluginInterface
 		$this->composer = $composer;
 	}
 
-	public function installPackage(PostFileDownloadEvent $event) {
+	public static function getSubscribedEvents()
+	{
+		return array(
+			PluginEvents::POST_FILE_DOWNLOAD => ['onPostFileDownload'],
+		);
+	}
+
+	public function onPostFileDownload(PostFileDownloadEvent $event) {
 
 		$config = $this->composer->getConfig();
+		var_dump($config['type']);
+
+		file_put_contents(__dir__.'/test.txt', 'test');
 
 		if ($config['type'] === 'plainphp-package') {
 	
@@ -39,11 +49,5 @@ class PackageInstaller implements PluginInterface
 
 	}
 
-	public static function getSubscribedEvents()
-	{
-		return array(
-			PluginEvents::POST_FILE_DOWNLOAD => 'installPackage',
-		);
-	}
 
 }
