@@ -9,7 +9,7 @@
     },
     "autoload":{
         "psr-4":{
-            "PlainPhp\\Composer\\":"/"
+            "PlainPhp\\Composer\\":"/src/"
         }
     }
 }
