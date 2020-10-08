@@ -1,1 +1,1 @@
-# ComposerPlugin
+# PackageInstaller
