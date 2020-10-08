@@ -8,9 +8,22 @@ use Composer\Plugin\PluginInterface;
 
 class PackageInstallerPlugin implements PluginInterface
 {
-	public function activate(Composer $composer, IOInterface $io)
-	{
-		$installer = new PackageInstaller($io, $composer);
-		$composer->getInstallationManager()->addInstaller($installer);
-	}
+
+    private $installer;
+
+    public function activate(Composer $composer, IOInterface $io)
+    {
+        $this->installer = new PackageInstaller($io, $composer);
+        $composer->getInstallationManager()->addInstaller($this->installer);
+    }
+
+    public function deactivate(Composer $composer, IOInterface $io)
+    {
+        $composer->getInstallationManager()->removeInstaller($this->installer);
+    }
+
+    public function uninstall(Composer $composer, IOInterface $io)
+    {
+    }
+
 }
