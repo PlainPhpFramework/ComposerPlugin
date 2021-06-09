@@ -2,7 +2,7 @@
     "name": "plainphp/package-installer",
     "type": "composer-plugin",
     "require": {
-        "composer-plugin-api": "^1.0"
+        "composer-plugin-api": "1 - 2"
     },
     "extra": {
         "class": "PlainPhp\\Composer\\PackageInstallerPlugin"
