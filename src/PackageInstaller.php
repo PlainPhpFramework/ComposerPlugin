@@ -11,7 +11,7 @@ class PackageInstaller extends LibraryInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
-        return 'packages';
+        return 'packages/'.$package->getPrettyName();
     }
 
     /**
