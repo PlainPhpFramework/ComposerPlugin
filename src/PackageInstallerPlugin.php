@@ -57,8 +57,6 @@ class PackageInstallerPlugin implements PluginInterface
             }
         }
         
-        return parent::cleanup($type, $package, $prevPackage);
-
     }
 
 }
