@@ -33,27 +33,17 @@ class PackageInstallerPlugin implements PluginInterface
 
         $this->initializeVendorDir();
         $downloadPath = $this->getInstallPath($package);
+        $packageName = $package->getPrettyName();
 
-        $filesToMove = array_merge(glob($downloadPath.'/config/*'), glob($downloadPath.'/hooks/*'));
+        // Move config files into the app directory
+        $filesToMove = glob($downloadPath.'/'.$packageName.'/config/*');
 
         foreach ($filesToMove as $file) {
-            $target = str_replace('/packages/', '/app/', $file);
+            $target = $downloadPath .'/../app/config/'.basename($file);
             if (file_exists($target)) {
                 continue;
             } else {
                 copy($file, $target);
-            }
-        }
-
-        $appPath = str_replace('/packages/', '/app/', $downloadPath);
-        $filesToCheck = array_merge(glob($appPath.'/config/*'), glob($appPath.'/hooks/*'));
-        
-        foreach ($filesToMove as $file) {
-            $package = str_replace('/app/', '/packages/', $file);
-            if (file_exists($package)) {
-                continue;
-            } else {
-                rename($file, $file.'.bk');
             }
         }
         
