@@ -5,7 +5,10 @@
         "composer-plugin-api": "1 - 2"
     },
     "extra": {
-        "class": "PlainPhp\\Composer\\PackageInstallerPlugin"
+        "class": "PlainPhp\\Composer\\PackageInstallerPlugin",
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     },
     "autoload":{
         "psr-4":{
