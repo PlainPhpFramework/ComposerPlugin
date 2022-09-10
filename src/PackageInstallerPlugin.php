@@ -28,25 +28,4 @@ class PackageInstallerPlugin implements PluginInterface
     {
     }
 
-    public function cleanup($type, PackageInterface $package, PackageInterface $prevPackage = null)
-    {
-
-        $this->initializeVendorDir();
-        $downloadPath = $this->getInstallPath($package);
-        $packageName = $package->getPrettyName();
-
-        // Move config files into the app directory
-        $filesToMove = glob($downloadPath.'/'.$packageName.'/config/*');
-
-        foreach ($filesToMove as $file) {
-            $target = $downloadPath .'/../app/config/'.basename($file);
-            if (file_exists($target)) {
-                continue;
-            } else {
-                copy($file, $target);
-            }
-        }
-        
-    }
-
 }
